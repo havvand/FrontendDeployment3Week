@@ -43,10 +43,11 @@
 
 /*Table with single line in orange*/
 .carstable {
+  align-self: auto;
   width: 100%;
   border-collapse: collapse;
   border: 1px solid orange;
   font-size: 1.2em;
   font-family: sans-serif;
-  margin: 0 auto;
+  margin: 1 auto;
 }
