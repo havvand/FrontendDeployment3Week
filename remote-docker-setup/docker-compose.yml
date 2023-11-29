@@ -1,0 +1,39 @@
+version: "3.3"
+
+services:
+
+    traefik:
+    image: "traefik:v2.10"
+    container_name: "traefik"
+    command:
+      - "--api.insecure=true" # enables the Traefik API. True by default
+      - "--providers.docker=true" # enables the Docker provider
+      - "--providers.docker.exposedbydefault=false" # prevents Traefik from creating routes for containers that don't have a traefik.enable=true label
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.email=havvand@hotmail.com" # Email address used for registration
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    ports:
+      - "443:443" # sets the port for HTTP
+      - "8080:8080" # sets the port for HTTPS
+    volumes:
+      - "./letsencrypt:/letsencrypt" # Copies the Let's Encrypt certificate locally for ease of backing up
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
+
+    europe:
+    image: "webtrade/europemap"
+    container_name: "europemap_container"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.europe.rule=Host(`europe.<YOUR_DOMAIN_NAME>`)"
+      - "traefik.http.routers.europe.entrypoints=websecure"
+      - "traefik.http.routers.europe.tls.certresolver=myresolver"
+      - "com.centurylinklabs.watchtower.enable=true"

@@ -47,16 +47,16 @@ const CarForm = () => {
   };
 
   return (
-    <div>
+    <div className="carstableForm">
       <h2>Create a New Car</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
+      <form  onSubmit={handleSubmit}>
+        <label className="formCars" >
           Name:
           <input type="text" name="name" value={formData.name} onChange={handleChange} />
-        </label>
+        </label >
         <br />
-        <label>
-          Speed:
+        <label className="formCars">
+          <p>Speed:</p>
           <input type="number" name="speed" value={formData.speed} onChange={handleChange} />
         </label>
         <br />
@@ -90,7 +90,7 @@ const CarForm = () => {
           <input type="text" name="brand" value={formData.brand} onChange={handleChange} />
         </label>
         <br />
-        <label>
+        <label className="formCars">
           Description:
           <textarea name="description" value={formData.description} onChange={handleChange} />
         </label>

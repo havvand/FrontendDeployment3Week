@@ -43,11 +43,35 @@
 
 /*Table with single line in orange*/
 .carstable {
-  align-self: auto;
+  align-self: center;
   width: 100%;
   border-collapse: collapse;
   border: 1px solid orange;
   font-size: 1.2em;
   font-family: sans-serif;
-  margin: 1 auto;
+  margin: 0 auto;
+}
+
+.carstableForm{
+  border: 1px solid orange;
+  padding: 5px;
+  text-align: center;
+  color: #000;
+  margin: 2px;
+}
+
+.labelCarForm{
+  color: #a8a8a8;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px;
+  
+}
+
+.formCars{
+  margin: 0 auto;
+  width: 50%;
+  padding: auto;
+  border: 1px solid orange;
+  border-radius: 5px;
 }
