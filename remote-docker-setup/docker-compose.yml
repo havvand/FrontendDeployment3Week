@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
 
-    traefik:
+  traefik:
     image: "traefik:v2.10"
     container_name: "traefik"
     command:
@@ -11,7 +11,7 @@ services:
       - "--providers.docker.exposedbydefault=false" # prevents Traefik from creating routes for containers that don't have a traefik.enable=true label
       - "--entrypoints.websecure.address=:443"
       - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
-      - "--certificatesresolvers.myresolver.acme.email=havvand@hotmail.com" # Email address used for registration
+      - "--certificatesresolvers.myresolver.acme.email=<YOUR_EMAIL_ADDRESS>"# Email address used for registration
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
@@ -28,7 +28,7 @@ networks:
   backend:
     driver: bridge
 
-    europe:
+  europe:
     image: "webtrade/europemap"
     container_name: "europemap_container"
     labels:
