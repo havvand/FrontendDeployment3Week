@@ -16,8 +16,8 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     ports:
-      - "443:443" # sets the port for HTTP
-      - "8080:8080" # sets the port for HTTPS
+      - "443:443" 
+      - "8080:8080" 
     volumes:
       - "./letsencrypt:/letsencrypt" # Copies the Let's Encrypt certificate locally for ease of backing up
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
